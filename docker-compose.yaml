@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  currency-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3000
+      - APYHUB_TOKEN=${APYHUB_TOKEN} # API token for the currency conversion API
+    ports:
+      - "3000:3000"  # Map host port 3000 to container port 3000
+    volumes:
+      - .:/app 
+    restart: unless-stopped
